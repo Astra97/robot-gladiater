@@ -60,6 +60,35 @@ var getPlayerName = function() {
 // You can also log multiple values at once like this
 console.log(playerInfo.name, playerInfo.attack, playerInfo.health);
 
+var fightOrSkip = function() {
+    // ask user if they'd like to fight or skip using  function
+    var promptFight = window.prompt('Would you like FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
+  
+
+    promptFight = promptFight.toLowerCase();
+
+    // Enter the conditional recursive function call here!
+  
+    // if user picks "skip" confirm and then stop the loop
+    if (promptFight === "skip") {
+      // confirm user wants to skip
+      var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+  
+      // if yes (true), leave fight
+      if (confirmSkip) {
+        window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
+        // subtract money from playerMoney for skipping
+        playerInfo.playerMoney = playerInfo.money - 10;
+        
+        return true;
+      }
+    }
+  }
+
+
+
+
+
 //create function
 var fight = function(enemy) {
     
@@ -82,8 +111,11 @@ var fight = function(enemy) {
     }
     while (playerInfo.health > 0 && enemyInfo.health > 0) {
       // ask user if they'd liked to fight or run
-      var promptFight = window.prompt('Would you like FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
-  
+      if (fightOrSkip()){
+          //if true,leave fight by breaking loop
+          break;
+      }
+      var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
       // if user picks "skip" confirm and then stop the loop
       if (promptFight === "skip" || promptFight === "SKIP") {
         // confirm user wants to skip
@@ -102,7 +134,7 @@ var fight = function(enemy) {
   
       // remove enemy's health by subtracting the amount set in the playerInfo.attack variable
       // generate random damage value based on player's attack power
-var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
+
 
 enemyInfo.health = Math.max(0, enemyInfo.health - damage);
       console.log(
