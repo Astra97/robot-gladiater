@@ -142,7 +142,6 @@ for (var i = 0; i < enemyNames.length; i++) {
      else {
        window.alert("You've lost your robot in battle.");
      }
-
      var playAgainConfirm = window.confirm("Would you like to play again?");
 
  if (playAgainConfirm) {
