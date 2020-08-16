@@ -1,5 +1,5 @@
 var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
@@ -39,6 +39,23 @@ var playerInfo = {
     var value = Math.floor(Math.random() * (max - min + 1) + min);
   
     return value;
+  };
+
+  // function to set name
+var getPlayerName = function() {
+    var name = "";
+  
+  // ***************************************
+  // ADD LOOP HERE WITH PROMPT AND CONDITION
+  // ***************************************
+  while (name === "" || name === null) {
+    name = prompt("What is your robot's name?");
+  }  
+
+
+
+    console.log("Your robot's name is " + name);
+    return name;
   };
 // You can also log multiple values at once like this
 console.log(playerInfo.name, playerInfo.attack, playerInfo.health);
